@@ -1,0 +1,16 @@
+# NOTE1:
+# NOTE2: Adjust "./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam, etc." to the number required base on the outputs from Step1
+
+samtools merge <sam_PE_ME_merged.bam ./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam ./4_PE.bam ./4_ME.bam ./5_PE.bam ./5_ME.bam ./6_PE.bam ./6_ME.bam ./7_PE.bam ./7_ME.bam ./8_PE.bam ./8_ME.bam
+samtools sort -m 24G -o B29233_PE_ME_merged_sort.bam B29233_PE_ME_merged.bam
+samtools index B29233_PE_ME_merged_sort.bam
+picard64 AddOrReplaceReadGroups I=B29233_PE_ME_merged_sort.bam O=B29233_PE_ME_merged_sort_RG.bam ID=B29233_PE_ME SM=B29233 LB=B29233 PL=DNBseq PU=BGI CN=BGI VALIDATION_STRINGENCY=SILENT
+samtools sort -m 24G -o B29233_PE_ME_merged_sort_RG_resort.bam B29233_PE_ME_merged_sort_RG.bam
+samtools index B29233_PE_ME_merged_sort_RG_resort.bam
+picard64 MarkDuplicates I=B29233_PE_ME_merged_sort_RG_resort.bam O=B29233_PE_ME_merged_sort_RG_resort_Mkdup.bam AS=TRUE M=B29233_PE_ME_merged_sort_RG_resort.metrics REMOVE_DUPLICATES=FALSE VALIDATION_STRINGENCY=LENIENT
+samtools sort -m 24G -o B29233_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam B29233_PE_ME_merged_sort_RG_resort_Mkdup.bam
+samtools index B29233_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam
+samtools flagstat B29233_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam > B29233_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.flagstat
+samtools depth B29233_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > coverage_B29233.txt
+
+chmod -R 777 *
