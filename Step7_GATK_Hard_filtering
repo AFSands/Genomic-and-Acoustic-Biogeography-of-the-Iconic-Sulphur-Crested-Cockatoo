@@ -1,0 +1,50 @@
+## NOTE1: This script is from the directory where the outputs from Step6 can be found (i.e. "<path_to_output_directory7>").
+
+#Change permissions
+chmod -R 777 *
+
+#Filter criteria for SNPs
+gatk --java-options "-Xmx32g" VariantFiltration \
+    -V dataset_combined_snps.vcf.gz \
+    -filter "QD < 2.0" --filter-name "QD2" \
+    -filter "QUAL < 30.0" --filter-name "QUAL30" \
+    -filter "SOR > 3.0" --filter-name "SOR3" \
+    -filter "FS > 60.0" --filter-name "FS60" \
+    -filter "MQ < 40.0" --filter-name "MQ40" \
+    -filter "MQRankSum < -12.5" --filter-name "MQRankSum-12.5" \
+    -filter "ReadPosRankSum < -8.0" --filter-name "ReadPosRankSum-8" \
+    -O /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz
+
+#Change permissions
+chmod -R 777 /<path_to_directory8>/*
+
+#Only retain variants that pass
+bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz > /<path_to_directory9>/dataset_combined_snps_filtered_pass.vcf.gz
+
+#Change permissions
+chmod -R 777 /<path_to_directory9>/*
+
+#Filter criteria for indels
+gatk --java-options "-Xmx32g" VariantFiltration \
+    -V dataset_combined_indels.vcf.gz \
+    -filter "QD < 2.0" --filter-name "QD2" \
+    -filter "QUAL < 30.0" --filter-name "QUAL30" \
+    -filter "FS > 200.0" --filter-name "FS200" \
+    -filter "ReadPosRankSum < -20.0" --filter-name "ReadPosRankSum-8" \
+    -O /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz
+
+#Change permissions
+chmod -R 777 /<path_to_directory8>/*
+
+#Only retain variants that pass
+bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz > /<path_to_directory9>/dataset_combined_indels_filtered_pass.vcf.gz
+
+#Change permissions
+chmod -R 777 /<path_to_directory9>/*
+
+#Index
+tabix -p vcf /<path_to_directory9>/dataset_combined_snps_filtered_pass.vcf.gz
+tabix -p vcf /<path_to_directory9>/dataset_combined_indels_filtered_pass.vcf.gz
+
+#Change permissions
+chmod -R 777 /<path_to_directory9>/*
