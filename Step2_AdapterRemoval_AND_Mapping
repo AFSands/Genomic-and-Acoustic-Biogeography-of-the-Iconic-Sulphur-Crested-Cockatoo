@@ -1,7 +1,7 @@
 ## NOTE1: This script is run for each specimen independently as an array job from the directory where raw sequence reads for that specimen can be found.
 ## NOTE2: Adapter sequences relate to those used by BGI for DNBseq whole-genome resequencing.
 ## NOTE3: Each script is accompanied by a name list of BGI sequence pair files' (i.e *.fq.gz) names for that individual specimen (see Step2_namelist as an example). The job array is set as the number of pairs of sequence read files that will be processed.
-## NOTE4: The name list file, in this case is simple called "namelist"
+## NOTE4: The name list file, in this case is simply called "namelist"
 ## NOTE5: Within each main output directory, subdirectories with the specimen name are created.
 
 #set the input file to process
