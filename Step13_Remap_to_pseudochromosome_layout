@@ -1,0 +1,29 @@
+## NOTE1: This script is from the directory where the outputs from Step12 can be found (i.e. "<path_to_output_directory15>").
+## NOTE2: This script requires several suuport files: "chrom_map", "contig_map", "<map_name>.agp" and "<map_name>.map". Examples of these files are provided (see Step13_"*").
+
+
+#Change permissions
+chmod -R 777 *
+
+#Unzip VCF
+gunzip -d dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9.vcf.gz
+
+#Change permissions
+chmod -R 777 *
+
+#Map to chromosomes
+chromosomer transfer -f vcf <map_name>.map dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9.vcf /<path_to_output_directory16>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9_mappedChr.vcf
+
+#Change permissions
+chmod -R 777 /<path_to_output_directory16>/*
+
+#Sort and index VCF
+vcf-sort /<path_to_output_directory16>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9_mappedChr.vcf -t '/<path_to_temporary_directory>/tmp' | bgzip -c > /<path_to_output_directory16>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9_mappedChr_sorted.vcf.gz
+tabix -p vcf /<path_to_output_directory16>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9_mappedChr_sorted.vcf.gz 
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory16>/*
+
+#Remove intermediate file
+rm /<path_to_output_directory16>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9_mappedChr.vcf
