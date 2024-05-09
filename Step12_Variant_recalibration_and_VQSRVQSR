@@ -1,0 +1,62 @@
+## NOTE1: This script is from the directory where the outputs from Step11 can be found (i.e. "<path_to_output_directory14>").
+
+#Change permissions
+chmod -R 777 *
+
+#Variant recalibration SNPS
+gatk --java-options "-Xmx32g" VariantRecalibrator \
+   -R /<path_to_reference_genome>/<reference_genome>.fa \
+   -V dataset_combined2_genotyped2.g.vcf.gz \
+   --resource:BGI_DNBseq_genomes,known=false,training=true,truth=true,prior=8.0 /<path_to_output_directory8>/dataset_combined_snps_filtered_pass.vcf.gz \
+   -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an DP -an InbreedingCoeff \
+   -mode SNP \
+   -O VariantRecalibrator.output.SNP.recal \
+   --tranches-file VariantRecalibrator.output.SNP.tranches \
+   --rscript-file VariantRecalibrator.output.plots.SNP.R
+
+#Change permissions
+chmod -R 777 *
+
+#VQSR SNPS
+gatk --java-options "-Xmx32g" ApplyVQSR \
+   -R /<path_to_reference_genome>/<reference_genome>.fa \
+   -V dataset_combined2_genotyped2.g.vcf.gz \
+   --recal-file VariantRecalibrator.output.SNP.recal \
+   -mode SNP \
+   --tranches-file VariantRecalibrator.output.SNP.tranches \
+   --truth-sensitivity-filter-level 99.9 \
+   -O dataset_combined2_genotyped2_snps_vQSR_recalibrated_99.9.vcf.gz
+
+#Change permissions
+chmod -R 777 *
+
+#Variant recalibration indels
+gatk --java-options "-Xmx32g" VariantRecalibrator \
+   -R /<path_to_reference_genome>/<reference_genome>.fa \
+   -V dataset_combined2_genotyped2.g.vcf.gz \
+   --resource:BGI_DNBseq_genomes,known=false,training=true,truth=true,prior=8.0 /<path_to_output_directory8>/dataset_combined_indels_filtered_pass.vcf.gz \
+   -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an DP -an InbreedingCoeff \
+   -mode INDEL \
+   -O VariantRecalibrator.output.INDEL.recal \
+   --tranches-file VariantRecalibrator.output.INDEL.tranches \
+   --rscript-file VariantRecalibrator.output.plots.INDEL.R
+
+#Change permissions
+chmod -R 777 *
+
+#VQSR indels with snps
+gatk --java-options "-Xmx32g" ApplyVQSR \
+   -R /<path_to_reference_genome>/<reference_genome>.fa \
+   -V dataset_combined2_genotyped2_snps_vQSR_recalibrated_99.9.vcf.gz \
+   --recal-file VariantRecalibrator.output.INDEL.recal \
+   -mode INDEL \
+   --tranches-file VariantRecalibrator.output.INDEL.tranches \
+   --truth-sensitivity-filter-level 99.9 \
+   -O /<path_to_output_directory15>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9.vcf.gz 
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory15>/*
+
+#Remove intermediate file
+rm dataset_combined2_genotyped2_snps_vQSR_recalibrated_99.9.vcf.gz
