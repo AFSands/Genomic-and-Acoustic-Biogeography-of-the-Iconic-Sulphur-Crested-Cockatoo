@@ -1,7 +1,7 @@
-## NOTE1: This script is run for each specimen independently as an array job from the directory where the outputs from Step4 can be found (i.e. "<path_to_output_directory4>".
-## NOTE2: Each script is accompanied by a name list of the VCF file names for all specimens for all replicates of Step4 (e.g. A-N) (see Step4_namelist as an example). The job array is set as the number of the number of specimens.
+## NOTE1: This script is run for each specimen independently as an array job from the directory where the outputs from Step4 can be found (i.e. "<path_to_output_directory4>").
+## NOTE2: Each script is accompanied by a name list of the VCF file names for all specimens for all replicates of Step4 (e.g. A-N) (see Step5_namelist as an example). The job array is set as the number of the number of specimens.
 ## NOTE3: The name list file, in this case is called "namelist" and is located in the same directory as the script.
-## NOTE4: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a sub directory.
+## NOTE4: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a subdirectory.
 
 #set the input file to process
 name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
@@ -23,7 +23,7 @@ gatk --java-options "-Xmx64g" CombineGVCFs \
    --variant ${name}_L.g.vcf.gz \
    --variant ${name}_M.g.vcf.gz \
    --variant ${name}_N.g.vcf.gz \
-   -O ${name}_mergedAN.g.vcf.gz \
-   --tmp-dir /<path_to_t/tmp
+   -O /path_to_output_directory5/${name}_mergedAN.g.vcf.gz \
+   --tmp-dir /<path_to_temporary_directory>/tmp
 
 chmod -R 777 *
