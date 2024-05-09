@@ -19,10 +19,10 @@ gatk --java-options "-Xmx32g" VariantFiltration \
 chmod -R 777 /<path_to_directory8>/*
 
 #Only retain variants that pass
-bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz > /<path_to_directory9>/dataset_combined_snps_filtered_pass.vcf.gz
+bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz > /<path_to_directory8>/dataset_combined_snps_filtered_pass.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory9>/*
+chmod -R 777 /<path_to_directory8>/*
 
 #Filter criteria for indels
 gatk --java-options "-Xmx32g" VariantFiltration \
@@ -37,14 +37,20 @@ gatk --java-options "-Xmx32g" VariantFiltration \
 chmod -R 777 /<path_to_directory8>/*
 
 #Only retain variants that pass
-bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz > /<path_to_directory9>/dataset_combined_indels_filtered_pass.vcf.gz
+bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz > /<path_to_directory8>/dataset_combined_indels_filtered_pass.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory9>/*
+chmod -R 777 /<path_to_directory8>/*
 
 #Index
-tabix -p vcf /<path_to_directory9>/dataset_combined_snps_filtered_pass.vcf.gz
-tabix -p vcf /<path_to_directory9>/dataset_combined_indels_filtered_pass.vcf.gz
+tabix -p vcf /<path_to_directory8>/dataset_combined_snps_filtered_pass.vcf.gz
+tabix -p vcf /<path_to_directory8>/dataset_combined_indels_filtered_pass.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory9>/*
+chmod -R 777 /<path_to_directory8>/*
+
+#Remove intermediate files
+rm /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz.tbi
+rm /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz
+rm /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz.tbi
+rm /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz
