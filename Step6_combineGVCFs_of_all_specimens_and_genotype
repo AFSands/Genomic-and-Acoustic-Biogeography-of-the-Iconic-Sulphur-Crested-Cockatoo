@@ -1,5 +1,5 @@
 ## NOTE1: This script is from the directory where the outputs from Step5 can be found (i.e. "<path_to_output_directory5>").
-## NOTE2: This script gives an example of combining GVCFs from 10 specimens into a single GVCF. "--variant" lines should be extended to cover the full list of specimens to be combined.
+## NOTE2: This script gives an example of combining GVCFs from 10 specimens into a single GVCF. "--variant" lines should be extended to cover the full list of specimens required to be combined.
 ## NOTE3: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a subdirectory. 
 
 #Change permissions
