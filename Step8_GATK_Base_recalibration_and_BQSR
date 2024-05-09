@@ -21,6 +21,7 @@ gatk BaseRecalibrator \
 #Change permissions of table
 chmod -R 777 /<path_to_output_directory9>/${name}.table
 
+#BQSR
 gatk ApplyBQSR \
 -R /<path_to_reference_genome>/<reference_genome>.fa \
 -I /<path_to_output_directory3>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam \
