@@ -1,4 +1,4 @@
-## NOTE1: This script is from the directory where the outputs from Step12 can be found (i.e. "<path_to_output_directory15>").
+## NOTE1: This script is run from the directory where the outputs from Step12 can be found (i.e. "<path_to_output_directory15>").
 ## NOTE2: This script requires several suuport files: "chrom_map", "contig_map", "<map_name>.agp" and "<map_name>.map". Examples of these files are provided (see Step13_"*").
 ## NOTE3: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a subdirectory called "tmp" is created.
 
