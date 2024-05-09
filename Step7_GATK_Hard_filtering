@@ -13,16 +13,16 @@ gatk --java-options "-Xmx32g" VariantFiltration \
     -filter "MQ < 40.0" --filter-name "MQ40" \
     -filter "MQRankSum < -12.5" --filter-name "MQRankSum-12.5" \
     -filter "ReadPosRankSum < -8.0" --filter-name "ReadPosRankSum-8" \
-    -O /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz
+    -O /<path_to_output_directory8>/dataset_combined_snps_filtered.vcf.gz
 
 #Change permissions
 chmod -R 777 /<path_to_directory8>/*
 
 #Only retain variants that pass
-bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz > /<path_to_directory8>/dataset_combined_snps_filtered_pass.vcf.gz
+bcftools view -Oz -f .,PASS /<path_to_output_directory8>/dataset_combined_snps_filtered.vcf.gz > /<path_to_output_directory8>/dataset_combined_snps_filtered_pass.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory8>/*
+chmod -R 777 /<path_to_output_directory8>/*
 
 #Filter criteria for indels
 gatk --java-options "-Xmx32g" VariantFiltration \
@@ -31,26 +31,26 @@ gatk --java-options "-Xmx32g" VariantFiltration \
     -filter "QUAL < 30.0" --filter-name "QUAL30" \
     -filter "FS > 200.0" --filter-name "FS200" \
     -filter "ReadPosRankSum < -20.0" --filter-name "ReadPosRankSum-8" \
-    -O /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz
+    -O /<path_to_output_directory8>/dataset_combined_indels_filtered.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory8>/*
+chmod -R 777 /<path_to_output_directory8>/*
 
 #Only retain variants that pass
-bcftools view -Oz -f .,PASS /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz > /<path_to_directory8>/dataset_combined_indels_filtered_pass.vcf.gz
+bcftools view -Oz -f .,PASS /<path_to_output_directory8>/dataset_combined_indels_filtered.vcf.gz > /<path_to_output_directory8>/dataset_combined_indels_filtered_pass.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory8>/*
+chmod -R 777 /<path_to_output_directory8>/*
 
 #Index
-tabix -p vcf /<path_to_directory8>/dataset_combined_snps_filtered_pass.vcf.gz
-tabix -p vcf /<path_to_directory8>/dataset_combined_indels_filtered_pass.vcf.gz
+tabix -p vcf /<path_to_output_directory8>/dataset_combined_snps_filtered_pass.vcf.gz
+tabix -p vcf /<path_to_output_directory8>/dataset_combined_indels_filtered_pass.vcf.gz
 
 #Change permissions
-chmod -R 777 /<path_to_directory8>/*
+chmod -R 777 /<path_to_output_directory8>/*
 
 #Remove intermediate files
-rm /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz.tbi
-rm /<path_to_directory8>/dataset_combined_indels_filtered.vcf.gz
-rm /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz.tbi
-rm /<path_to_directory8>/dataset_combined_snps_filtered.vcf.gz
+rm /<path_to_output_directory8>/dataset_combined_indels_filtered.vcf.gz.tbi
+rm /<path_to_output_directory8>/dataset_combined_indels_filtered.vcf.gz
+rm /<path_to_output_directory8>/dataset_combined_snps_filtered.vcf.gz.tbi
+rm /<path_to_output_directory8>/dataset_combined_snps_filtered.vcf.gz
