@@ -7,8 +7,6 @@
 #set the input file to process
 name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
 
-module load biokit
-
 #Change permissions
 chmod -R 777 *
 
