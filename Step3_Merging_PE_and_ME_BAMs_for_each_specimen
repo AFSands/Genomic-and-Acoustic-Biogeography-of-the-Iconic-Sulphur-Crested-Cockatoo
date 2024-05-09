@@ -2,6 +2,9 @@
 ## NOTE2: This script is run in the directory where the final outputs from Step2 are located (i.e. "<path_to_output_directory2>")
 ## NOTE3: Adjust "./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam, etc." to the number required based on the outputs from Step2
 
+#Change permissions
+chmod -R 777 *
+
 #Merge, sort, index, add read groups, resort, reindex, mark duplicates, conduct a final sort, index and calculate flagstats and coverage
 samtools merge <specimen_name>_PE_ME_merged.bam ./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam ./4_PE.bam ./4_ME.bam ./5_PE.bam ./5_ME.bam ./6_PE.bam ./6_ME.bam ./7_PE.bam ./7_ME.bam ./8_PE.bam ./8_ME.bam
 samtools sort -m 24G -o <specimen_name>_PE_ME_merged_sort.bam <specimen_name>_PE_ME_merged.bam
@@ -17,6 +20,7 @@ samtools depth /<path_to_output_directory3>/<specimen_name>_PE_ME_merged_sort_RG
 
 #Change permissions
 chmod -R 777 *
+chmod -R 777 /<path_to_output_directory3>/*
 
 #Remove intermediate files
 rm <specimen_name>_PE_ME_merged.bam
