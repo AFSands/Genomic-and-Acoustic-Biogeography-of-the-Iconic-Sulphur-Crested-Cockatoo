@@ -3,6 +3,9 @@
 ## NOTE3: The name list file, in this case is called "namelist" and is located in the same directory as the script.
 ## NOTE4: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a subdirectory.
 
+#Change permissions
+chmod -R 777 *
+
 #set the input file to process
 name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
 
@@ -26,4 +29,6 @@ gatk --java-options "-Xmx64g" CombineGVCFs \
    -O /path_to_output_directory5/${name}_mergedAN.g.vcf.gz \
    --tmp-dir /<path_to_temporary_directory>/tmp
 
+#Change permissions
 chmod -R 777 *
+chmod -R 777 /<path_to_output_directory5>/*
