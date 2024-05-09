@@ -1,8 +1,8 @@
 ## NOTE1: This script is run for each specimen independently as an array job from the directory where the outputs from Step4 can be found (i.e. "<path_to_output_directory4>").
 ## NOTE2: This script assumes that the genome was broken down into 14 contig lists (i.e. A-N). However, more or less contig lists could be given, thus adjust "--variant" lines as required depending on the number of contig list replicates from step4.
-## NOTE2: Each script is accompanied by a name list of the common portion of the GVCF file names for specimens for all separate contig list replicates of Step4 (e.g. here A-N) (see Step5_namelist as an example). The job array is set as the number of the number of specimens.
-## NOTE3: The name list file, in this case is called "namelist" and is located in the same directory as the script.
-## NOTE4: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a subdirectory.
+## NOTE3: Each script is accompanied by a name list of the common portion of the GVCF file names for specimens for all separate contig list replicates of Step4 (e.g. here A-N) (see Step5_namelist as an example). The job array is set as the number of the number of specimens.
+## NOTE4: The name list file, in this case is called "namelist" and is located in the same directory as the script.
+## NOTE5: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a subdirectory.
 
 #Change permissions
 chmod -R 777 *
