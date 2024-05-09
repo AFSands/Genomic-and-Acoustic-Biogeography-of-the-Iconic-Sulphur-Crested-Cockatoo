@@ -1,0 +1,26 @@
+## NOTE1: This script is run for each specimen independently as an array job from the directory where raw sequence reads for that specimen can be found.
+## NOTE2: Adapter sequences relate to those used by BGI for DNBseq whole-genome resequencing.
+## NOTE3: Each script is accompanied by a "namelist" of BGI sequence pair files' ".fq.gz" names for that individual specimen (see namelist1 as an example). The array is set as the number of pair files.
+## NOTE4: Within each main output directory, subdirectories with the specimen name are created.
+
+#set the input file to process
+name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
+
+module load biokit
+
+#Change permissions
+chmod -R 777 *
+
+#Adapter removal
+AdapterRemoval --file1 ${name}_1.fq.gz --file2 ${name}_2.fq.gz --adapter1 AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAANNNNNNNNNNCAACTCCTTGGCTCACA --adapter2 AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG --basename /<path_to_output_directory1>/<sample_name>/${name} --collapse --trimns --trimqualities --gzip
+
+#Change permissions
+chmod -R 777 /<path_to_output_directory1>/<sample_name>/*
+
+#Alignment to reference genome
+bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<sample_name>/${name}.pair1.truncated.gz /<path_to_output_directory1>/<sample_name>/${name}.pair2.truncated.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<sample_name>/${SLURM_ARRAY_TASK_ID}_PE.bam
+bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<sample_name>/${name}.collapsed.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<sample_name>/${SLURM_ARRAY_TASK_ID}_ME.bam
+bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<sample_name>/${name}.collapsed.truncated.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<sample_name>/${SLURM_ARRAY_TASK_ID}_MET.bam
+
+#Change permissions
+chmod -R 777 /<path_to_output_directory2>/<sample_name>/*
