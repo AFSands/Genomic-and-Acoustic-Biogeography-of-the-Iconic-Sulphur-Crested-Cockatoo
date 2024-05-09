@@ -1,4 +1,9 @@
-
+## NOTE1: This script is run for each specimen independently as an array job from the directory where the outputs from Step3 can be found (i.e. ".
+## NOTE2: Each script is accompanied by a name list of the final .bam file names for all specimens (see Step4_namelist as an example). The job array is set as the number of .bam files that will be processed (i.e. the number of specimens).
+## NOTE3: The name list file, in this case is simply called "namelist"
+## NOTE4: Due to HaplotypeCaller being generally slow, several replicates of this script are used to call haplotypes, using separate contigs lists (see Step4_hclistA as an example), to portion the genome into manageable segments for processing.
+## NOTE5: The contig list file, in this case is called "hclistA.list"
+## NOTE6: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmpA" is created.
 
 #set the input file to process
 name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
