@@ -13,15 +13,15 @@ module load biokit
 chmod -R 777 *
 
 #Adapter removal
-AdapterRemoval --file1 ${name}_1.fq.gz --file2 ${name}_2.fq.gz --adapter1 AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAANNNNNNNNNNCAACTCCTTGGCTCACA --adapter2 AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG --basename /<path_to_output_directory1>/<sample_name>/${name} --collapse --trimns --trimqualities --gzip
+AdapterRemoval --file1 ${name}_1.fq.gz --file2 ${name}_2.fq.gz --adapter1 AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAANNNNNNNNNNCAACTCCTTGGCTCACA --adapter2 AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG --basename /<path_to_output_directory1>/<specimen_name>/${name} --collapse --trimns --trimqualities --gzip
 
 #Change permissions
 chmod -R 777 /<path_to_output_directory1>/<sample_name>/*
 
 #Alignment to reference genome
-bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<sample_name>/${name}.pair1.truncated.gz /<path_to_output_directory1>/<sample_name>/${name}.pair2.truncated.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<sample_name>/${SLURM_ARRAY_TASK_ID}_PE.bam
-bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<sample_name>/${name}.collapsed.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<sample_name>/${SLURM_ARRAY_TASK_ID}_ME.bam
-bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<sample_name>/${name}.collapsed.truncated.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<sample_name>/${SLURM_ARRAY_TASK_ID}_MET.bam
+bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<specimen_name>/${name}.pair1.truncated.gz /<path_to_output_directory1>/<specimen_name>/${name}.pair2.truncated.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<specimen_name>/${SLURM_ARRAY_TASK_ID}_PE.bam
+bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<specimen_name>/${name}.collapsed.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<specimen_name>/${SLURM_ARRAY_TASK_ID}_ME.bam
+bwa mem -t4 -M  /<path_to_reference_genome>/<reference_genome_name>.fa /<path_to_output_directory1>/<specimen_name>/${name}.collapsed.truncated.gz | samtools view -F4 -hb -o /<path_to_output_directory2>/<specimen_name>/${SLURM_ARRAY_TASK_ID}_MET.bam
 
 #Change permissions
 chmod -R 777 /<path_to_output_directory2>/<sample_name>/*
