@@ -1,5 +1,5 @@
 ## NOTE1: This script is run for each specimen independently
-## NOTE2: This script is run in the directory where the final outputs from Step2 are located
+## NOTE2: This script is run in the directory where the final outputs from Step2 are located (i.e. "<path_to_output_directory2>")
 ## NOTE3: Adjust "./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam, etc." to the number required based on the outputs from Step2
 
 #Merge, sort, index, add read groups, resort, reindex, mark duplicates, conduct a final sort, index and calculate flagstats and coverage
@@ -10,10 +10,10 @@ picard64 AddOrReplaceReadGroups I=<specimen_name>_PE_ME_merged_sort.bam O=<speci
 samtools sort -m 24G -o <specimen_name>_PE_ME_merged_sort_RG_resort.bam <specimen_name>_PE_ME_merged_sort_RG.bam
 samtools index <specimen_name>_PE_ME_merged_sort_RG_resort.bam
 picard64 MarkDuplicates I=<specimen_name>_PE_ME_merged_sort_RG_resort.bam O=<specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup.bam AS=TRUE M=<specimen_name>_PE_ME_merged_sort_RG_resort.metrics REMOVE_DUPLICATES=FALSE VALIDATION_STRINGENCY=LENIENT
-samtools sort -m 24G -o <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup.bam
-samtools index <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam
-samtools flagstat <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam > <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.flagstat
-samtools depth <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > coverage_<specimen_name>.txt
+samtools sort -m 24G -o /<path_to_output_directory3>/<specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup.bam
+samtools index /<path_to_output_directory3>/<specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam
+samtools flagstat /<path_to_output_directory3>/<specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam > /<path_to_output_directory3>/<specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.flagstat
+samtools depth /<path_to_output_directory3>/<specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > /<path_to_output_directory3>/coverage_<specimen_name>.txt
 
 #Change permissions
 chmod -R 777 *
