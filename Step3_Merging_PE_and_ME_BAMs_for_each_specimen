@@ -2,7 +2,7 @@
 ## NOTE2: This script is run in the directory where the final outputs from Step2 are located
 ## NOTE3: Adjust "./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam, etc." to the number required based on the outputs from Step2
 
-# Merge, sort, index, add read groups, resort, reindex, mark duplicates, conduct a final sort, index and calculate flagstats and coverage
+#Merge, sort, index, add read groups, resort, reindex, mark duplicates, conduct a final sort, index and calculate flagstats and coverage
 samtools merge <specimen_name>_PE_ME_merged.bam ./1_PE.bam ./1_ME.bam ./2_PE.bam ./2_ME.bam ./3_PE.bam ./3_ME.bam ./4_PE.bam ./4_ME.bam ./5_PE.bam ./5_ME.bam ./6_PE.bam ./6_ME.bam ./7_PE.bam ./7_ME.bam ./8_PE.bam ./8_ME.bam
 samtools sort -m 24G -o <specimen_name>_PE_ME_merged_sort.bam <specimen_name>_PE_ME_merged.bam
 samtools index <specimen_name>_PE_ME_merged_sort.bam
@@ -15,10 +15,10 @@ samtools index <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam
 samtools flagstat <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam > <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.flagstat
 samtools depth <specimen_name>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > coverage_<specimen_name>.txt
 
-# Change permissions
+#Change permissions
 chmod -R 777 *
 
-# Remove intermediate files
+#Remove intermediate files
 rm <specimen_name>_PE_ME_merged.bam
 rm <specimen_name>_PE_ME_merged_sort.bam
 rm <specimen_name>_PE_ME_merged_sort.bam.bai
