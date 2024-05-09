@@ -21,12 +21,30 @@ gatk --java-options "-Xmx256g" CombineGVCFs \
    -O /<path_to_output_directory6>/dataset_combined.g.vcf.gz \
    --tmp-dir /<path_to_temporary_directory>/tmp
 
-#Call_genotypes
+#Change permissions
+chmod -R 777 /<path_to_output_directory6>/*
+
+#Call genotypes
 gatk --java-options "-Xmx64g" GenotypeGVCFs \
    -R /<path_to_reference_genome>/<reference_genome>.fa \
    -V /<path_to_output_directory6>/dataset_combined.g.vcf.gz \
    -O /<path_to_output_directory7>/dataset_combined_genotyped.g.vcf.gz \
    --tmp-dir /<path_to_temporary_directory>/tmp
+
+#Change permissions
+chmod -R 777 /<path_to_output_directory7>/*
+
+#Call SNPs
+gatk SelectVariants \
+    -V /<path_to_output_directory7>/dataset_combined_genotyped.g.vcf.gz \
+    -select-type SNP \
+    -O /<path_to_output_directory7>/dataset_combined_snps.vcf.gz
+
+#Call indels
+gatk --java-options "-Xmx32g" SelectVariants \
+    -V /<path_to_output_directory7>/dataset_combined_genotyped.g.vcf.gz \
+    -select-type INDEL \
+    -O /<path_to_output_directory7>/dataset_combined_indels.vcf.gz
 
 #Change permissions
 chmod -R 777 *
