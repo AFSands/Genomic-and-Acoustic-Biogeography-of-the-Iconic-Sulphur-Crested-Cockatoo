@@ -1,0 +1,25 @@
+## NOTE1: This script is run for each specimen independently as an array job from the directory where the outputs from Step8 can be found (i.e. "<path_to_output_directory10>".
+## NOTE2: Each script is accompanied by a name list of the BQSR recalibrated .bam file names for all specimens (see Step9_namelist as an example). The job array is set as the number of .bam files that will be processed (i.e. the number of specimens).
+## NOTE3: The name list file, in this case is called "namelist" and is located in the same directory as the script.
+## NOTE4: Due to HaplotypeCaller being generally slow, several replicates of this script are used to call haplotypes, using separate contigs lists (see Step8_hclistA as an example), to portion the genomes into manageable segments for processing.
+## NOTE5: The contig list file in this case is called "hclistA.list" and is located in the same directory as the script.
+## NOTE6: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a subdirectory called "tmpA" is created.
+
+#Change permissions
+chmod -R 777 *
+
+#set the input file to process
+name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
+
+#HaplotypeCaller
+gatk --java-options "-Xmx24g" HaplotypeCaller \
+         -R /<path_to_reference_genome>/<reference_genome>.fa \
+         -L ./hclistA.list \
+         -I ${name}.bam \
+         -O /<path_to_output_directory11>/${name}_A.g.vcf.gz \
+         -ERC GVCF \
+         --tmp-dir /<path_to_temporary_directory>/tmpA
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory11>/*
