@@ -1,0 +1,14 @@
+## NOTE1: This script is run from the directory containing the reference genome
+
+#Change permissions
+chmod -R 777 *
+
+#Create a sequence dictionary file from a fasta file.
+samtools dict <reference_genome>.fa > <reference_genome>.fa.dict
+
+#Index reference genome
+samtools faidx <reference_genome>.fa
+bwa index <reference_genome>.fa
+
+#Change permissions
+chmod -R 777 *
