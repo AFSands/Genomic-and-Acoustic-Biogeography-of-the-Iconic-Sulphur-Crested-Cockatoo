@@ -1,4 +1,4 @@
-## NOTE1: This script is from the directory where the outputs from Step11 can be found (i.e. "<path_to_output_directory14>").
+## NOTE1: This script is run from the directory where the outputs from Step11 can be found (i.e. "<path_to_output_directory14>").
 
 #Change permissions
 chmod -R 777 *
