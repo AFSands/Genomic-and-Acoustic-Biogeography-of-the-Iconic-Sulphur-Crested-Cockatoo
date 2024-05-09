@@ -1,0 +1,52 @@
+## NOTE1: This script is from the directory where the final outputs from Step7 can be found (i.e. "<path_to_output_directory8>") and is run as an array job.
+## NOTE2: Each script is accompanied by a name list of specimen names taken from the first part of the .bam file names (see Step8_namelist as an example). The job array is set as the number of specimens that will be processed.
+## NOTE3: The name list file, in this case is simply called "namelist"
+
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory3>/*
+
+#Set the input file to process
+name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
+
+#Recalibration and filtering
+gatk BaseRecalibrator \
+-I /<path_to_output_directory3>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam \
+-R /<path_to_reference_genome>/<reference_genome>.fa \
+--known-sites dataset_combined_indels_filtered_pass.vcf.gz \
+--known-sites dataset_combined_snps_filtered_pass.vcf.gz \
+-O /<path_to_output_directory9>/${name}.table
+
+#Change permissions of table
+chmod -R 777 /<path_to_output_directory9>/${name}.table
+
+gatk ApplyBQSR \
+-R /<path_to_reference_genome>/<reference_genome>.fa \
+-I /<path_to_output_directory3>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort.bam \
+--bqsr-recal-file /<path_to_output_directory9>/${name}.table \
+-O /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated.bam
+# If you use the below filters in the future add them above -O and below --bqsr-recal-file
+#--read-filter GoodCigarReadFilter \
+#--read-filter NotDuplicateReadFilter \
+#--read-filter PassesVendorQualityCheckReadFilter \
+#--read-filter MappingQualityReadFilter \
+#--read-filter MappingQualityAvailableReadFilter \
+#--read-filter PrimaryLineReadFilter \
+#--read-filter MappedReadFilter \
+
+#Change permissions
+chmod -R 777 /<path_to_output_directory10>/*
+
+#Resort and index recalibrated bam and calculate flagstats and coverage
+samtools sort -o /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort.bam /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated.bam
+samtools index /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort.bam
+samtools flagstat /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort.bam > /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort.flagstat
+samtools depth /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > /<path_to_output_directory10>/coverage_${name}.txt
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory10>/*
+
+#Remove intermediate files
+rm /<path_to_output_directory10>/${name}_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated.bam
