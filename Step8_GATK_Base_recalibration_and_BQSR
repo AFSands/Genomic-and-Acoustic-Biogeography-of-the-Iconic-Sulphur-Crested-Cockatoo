@@ -2,7 +2,6 @@
 ## NOTE2: Each script is accompanied by a name list of specimen names taken from the first part of the .bam file names (see Step8_namelist as an example). The job array is set as the number of specimens that will be processed.
 ## NOTE3: The name list file, in this case is simply called "namelist"
 
-
 #Change permissions
 chmod -R 777 *
 chmod -R 777 /<path_to_output_directory3>/*
