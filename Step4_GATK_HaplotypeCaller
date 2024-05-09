@@ -5,6 +5,9 @@
 ## NOTE5: The contig list file in this case is called "hclistA.list" and is located in the same directory as the script.
 ## NOTE6: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a subdirectory called "tmpA" is created.
 
+#Change permissions
+chmod -R 777 *
+
 #set the input file to process
 name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
 
@@ -19,3 +22,4 @@ gatk --java-options "-Xmx24g" HaplotypeCaller \
 
 #Change permissions
 chmod -R 777 *
+chmod -R 777 /<path_to_output_directory4>/*
