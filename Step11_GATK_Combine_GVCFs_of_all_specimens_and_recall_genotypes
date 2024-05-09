@@ -1,0 +1,36 @@
+## NOTE1: This script is run from the directory where the outputs from Step10 can be found (i.e. "<path_to_output_directory12>").
+## NOTE2: This script gives an example of combining GVCFs from 10 specimens into a single GVCF. "--variant" lines should be extended to cover the full list of specimens required to be combined.
+## NOTE3: A directory for temporary files needs to be created for each replicate of this script. In this specific instance a directory called "tmp" is created as a subdirectory. 
+
+#Change permissions
+chmod -R 777 *
+
+#Combine GVCFs of all specimens into a single GVCF
+gatk --java-options "-Xmx256g" CombineGVCFs \
+   -R /<path_to_reference_genome>/<reference_genome>.fa \
+   --variant <specimen1>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen2>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen3>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen4>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen5>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen6>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen7>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen8>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen9>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   --variant <specimen10>_PE_ME_merged_sort_RG_resort_Mkdup_finalsort_filtered_recalibrated_resort_mergedAN.g.vcf.gz \
+   -O /<path_to_output_directory13>/dataset_combined2.g.vcf.gz \
+   --tmp-dir /<path_to_temporary_directory>/tmp
+
+#Change permissions
+chmod -R 777 /<path_to_output_directory13>/*
+
+#Call_genotypes
+gatk --java-options "-Xmx64g" GenotypeGVCFs \
+   -R /<path_to_reference_genome>/<reference_genome>.fa \
+   -V /<path_to_output_directory13>/dataset_combined2.g.vcf.gz \
+   -O /<path_to_output_directory14>/dataset_combined2_genotyped2.g.vcf.gz \
+   --tmp-dir /<path_to_temporary_directory>/tmp
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory14>/*
