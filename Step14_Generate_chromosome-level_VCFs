@@ -1,4 +1,7 @@
+## NOTE1: This script is from the directory where the outputs from Step13 can be found (i.e. "<path_to_output_directory16>").
 
+#Change permissions
+chmod -R 777 *
 
 #Create separate VCFs for each chromosome
 bcftools view dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99.9_mappedChr_sorted.vcf.gz --regions Chr1 | bgzip -c > /<path_to_output_directory17>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_Chr1.vcf.gz
@@ -56,3 +59,4 @@ tabix -p vcf /<path_to_output_directory17>/dataset_combined2_genotyped2_indelSNP
 
 #Change permissions
 chmod -R 777 *
+chmod -R 777 /<path_to_output_directory17>/*
