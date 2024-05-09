@@ -1,0 +1,16 @@
+
+
+#set the input file to process
+name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
+
+#HaplotypeCaller
+gatk --java-options "-Xmx24g" HaplotypeCaller \
+         -R /<path_to_reference_genome>/<reference_genome>.fa \
+         -L ./hclistA.list \
+         -I ${name} \
+         -O ${name}_A.g.vcf.gz \
+         -ERC GVCF \
+         --tmp-dir /<path_to_temporary_directory>/tmpA
+
+#Change permissions
+chmod -R 777 *
