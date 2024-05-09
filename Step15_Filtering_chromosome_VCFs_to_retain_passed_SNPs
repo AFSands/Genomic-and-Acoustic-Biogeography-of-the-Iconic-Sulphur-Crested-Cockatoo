@@ -1,0 +1,23 @@
+## NOTE1: This script is run for each chromosome independently as an array job from the output directory of Step14 (i.e. "<path_to_output_directory17>").
+## NOTE2: Each script is accompanied by a name list of chromosome names (see Step15_namelist as an example). The job array is set as the number of chromosomes in the namelist.
+## NOTE3: The name list file, in this case is called "namelist".
+
+#Change file permissions
+chmod -R 777 * 
+
+#set the input file to process
+name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
+
+#Filter VCFs to retain only passed calls and SNP data
+bcftools view -Oz -f .,PASS dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_Chr_Chr${name}.vcf.gz > /<path_to_output_directory18>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_Chr${name}.vcf.gz
+tabix -p vcf /<path_to_output_directory18>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_Chr${name}.vcf.gz
+vcftools --gzvcf /<path_to_output_directory18>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_Chr${name}.vcf.gz --remove-indels --max-missing 1 --min-meanDP 5 --max-meanDP 35 --recode --recode-INFO-all --out /<path_to_output_directory18>/dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr${name} --stdout | bgzip -c > /<path_to_output_directory18>/dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr${name}.vcf.gz
+tabix -p vcf /<path_to_output_directory18>/dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr${name}.vcf.gz
+
+#Change file permissions
+chmod -R 777 * 
+chmod -R 777 /<path_to_output_directory18>/* 
+
+#Remove intermediate files
+rm /<path_to_output_directory18>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_Chr${name}.vcf.gz
+rm /<path_to_output_directory18>/dataset_combined2_genotyped2_indelSNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_Chr${name}.vcf.gz.tbi
