@@ -1,0 +1,21 @@
+## NOTE1: This script uses the outputs from the final step of the WGR processing as the initial input.
+## NOTE2: This script contains a list of samples to be removed from the output VCF (see Step1_removesamples1). This list is called "removesamples1"
+
+#Changing permissions
+chmod -R 777 *
+
+#Creating inputs for IQTree (99 samples = 95 x C. galerita, 2 x C. sulphurea, 2 x C. alba) - Note maf is adjusted so that alleles need to be present in at least two full samples to account for the outgroups pop sizes.
+plink --file allspecimens_VQSRpassSNPs_mergedNoUnWZ --remove removesamples1 --recode vcf --out inter_VQSRpassSNPs_mergedNoUnWZ 
+gatk SelectVariants -V inter_VQSRpassSNPs_mergedNoUnWZ.vcf -O inter_VQSRpassSNPs_mergedNoUnWZ_variants.vcf --exclude-non-variants
+vcftools --vcf inter_VQSRpassSNPs_mergedNoUnWZ_variants.vcf --plink --out inter_VQSRpassSNPs_mergedNoUnWZ_variants
+rm inter_VQSRpassSNPs_mergedNoUnWZ.vcf
+rm inter_VQSRpassSNPs_mergedNoUnWZ_variants.vcf
+plink --file inter_VQSRpassSNPs_mergedNoUnWZ_variants --make-bed --recode --out inter_VQSRpassSNPs_mergedNoUnWZ_variants
+plink --bfile inter_VQSRpassSNPs_mergedNoUnWZ_variants --maf 0.0202 --make-bed --out inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202
+plink --bfile inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202 --indep-pairwise 50 5 0.2 --out inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202
+plink --bfile inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202 --extract inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202.prune.in --make-bed --distance triangle ibs 1-ibs allele-ct --out inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_PCA1
+plink --bfile inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_PCA1 --recode vcf --out /scratch/project_2006079/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis5_iqtree/inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_IQTree 
+### Samples in output = 99; SNPs remaining in output = 2,221,243
+
+#Changing permissions
+chmod -R 777 *
