@@ -1,4 +1,4 @@
-
+## NOTE1: This script is run in the directory containing the Fasta output from IQTree/Step2.
 
 #Change permissions
 chmod -R 777 *
