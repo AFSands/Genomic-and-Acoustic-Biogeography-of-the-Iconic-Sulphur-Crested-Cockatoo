@@ -1,0 +1,9 @@
+
+
+#Change permissions
+chmod -R 777 *
+
+iqtree -s inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_IQTree.min99.fasta -v -m TEST -bb 10000 -bnni -st DNA -nt AUTO
+
+#Change permissions
+chmod -R 777 *
