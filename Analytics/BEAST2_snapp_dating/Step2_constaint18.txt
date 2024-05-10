@@ -1,0 +1,1 @@
+lognormal(0,5.32,0.216)  crown  ALB,WA,MVI,NT,SNG,CYP,QL,NSW,ACT,VIC,SA,TAS
