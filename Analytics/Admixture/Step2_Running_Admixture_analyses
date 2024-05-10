@@ -1,0 +1,24 @@
+## NOTE1: This script is run as an array job from the directory where the Plink bfile outputs from Admixture/Step1 are found.
+## NOTE2: This script runs 10 replicates (A-J) of each k value, where the k values (1-6) are provided in a name list (see Step2_namelist) called "namelist" herein. 
+## NOTE3: The number of arrays is set to the total k's assessed (i.e. 6)
+
+#Change permissions
+chmod -R 777 *
+
+#set the input file to process
+name=$(sed -n ${SLURM_ARRAY_TASK_ID}p namelist)
+
+#Run Admixture analyses
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_A.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_B.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_C.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_D.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_E.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_F.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_G.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_H.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_I.out
+/projappl/project_2006079/afsands/dist/admixture_linux-1.3.0/admixture --cv -s time -B1000 intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix.bed ${name} -j24 > log_${name}_J.out
+
+#Change permissions
+chmod -R 777 *
