@@ -1,6 +1,5 @@
 ## NOTE1: This script is run from the output directory of Step15 (i.e. "<path_to_output_directory18>").
 ## NOTE2: This script is accompanied by a chromosome map file (see Step16_chrom_map as an example). The map file, in this case is called "chrom_map".
-## NOTE3: This script is accompanied by a merge list file (see Step16_merge_list as an example). The map file, in this case is called "merge_list".
 
 #Change permissions
 chmod -R 777 *
@@ -36,10 +35,3 @@ vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mapped
 #Change permissions
 chmod -R 777 *
 chmod -R 777 /<path_to_output_directory19>/*
-
-#Merge autosomal SNPs - ignore "Un"positioned, W and Z SNPs
-plink --file /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr1 --merge-list merge_list --recode --out /<path_to_output_directory20>/allspecimens_VQSRpassSNPs_merged_NoUnWZ
-
-#Change permissions
-chmod -R 777 *
-chmod -R 777 /<path_to_output_directory20>/*
