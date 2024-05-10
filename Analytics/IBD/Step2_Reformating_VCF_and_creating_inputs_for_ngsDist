@@ -1,0 +1,15 @@
+
+
+#Changing permissions
+chmod -R 777 *
+
+#Reformating VCF and generating .geno.gz input
+bcftools view --types snps -m1 -M2 /scratch/project_2006079/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis9_IBD/intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_IBDvcf.vcf > outI.vcf
+plink --double-id --vcf outI.vcf --recode A-transpose --out outI
+tail -n+2 outI.traw | cut -f 1,4- | perl -p -e 's/\bNA\b/-1/g' | gzip > outI.geno.gz 
+
+#Generating a lables file
+grep CHROM /scratch/project_2006079/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis9_IBD/intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_IBDvcf.vcf | cut -f10- | tr "\t" "\n" > outI.labels
+
+#Changing permissions
+chmod -R 777 *
