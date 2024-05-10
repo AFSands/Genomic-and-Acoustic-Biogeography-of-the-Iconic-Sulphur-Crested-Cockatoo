@@ -1,0 +1,45 @@
+## NOTE1: This script is run from the output directory of Step15 (i.e. "<path_to_output_directory18>").
+## NOTE2: This script is accompanied by a chromosome map file (see Step16_chrom_map as an example). The map file, in this case is called "chrom_map".
+## NOTE3: This script is accompanied by a merge list file (see Step16_merge_list as an example). The map file, in this case is called "merge_list".
+
+#Change permissions
+chmod -R 777 *
+
+#Create Plink readable files
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr1.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr1
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr2.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr2
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr3.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr3
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr4.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr4
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr5.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr5
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr6.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr6
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr7.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr7
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr8.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr8
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr9.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr9
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr10.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr10
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr11.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr11
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr12.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr12
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr13.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr13
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr14.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr14
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr15.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr15
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr16.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr16
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr17.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr17
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr18.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr18
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr19.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr19
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr20.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr20
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr21.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr21
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr22.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr22
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_Chr23.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr23
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_ChrUn.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_ChrUn
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_ChrZ.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_ChrZ
+vcftools --gzvcf dataset_combined2_genotyped2_SNPs_vQSR_recalibrated_99_9_mappedChr_sort_pass_vcffilter_ChrW.vcf.gz --plink --chrom-map chrom_map --out /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_ChrW
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory19>/*
+
+#Merge autosomal SNPs - ignore "Un"positioned, W and Z SNPs
+plink --file /<path_to_output_directory19>/allspecimens_VQSRpassSNPs_Chr1 --merge-list merge_list --recode --out /<path_to_output_directory20>/allspecimens_VQSRpassSNPs_merged_NoUnWZ
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory20>/*
