@@ -1,0 +1,12 @@
+## NOTE1: This script is run from the output directory of Step16 (i.e. "<path_to_output_directory19>").
+## NOTE2: This script is accompanied by a merge list file (see Step17_merge_list as an example). The map file, in this case is called "merge_list".
+
+#Change permissions
+chmod -R 777 *
+
+#Merge autosomal SNPs - ignore "Un"positioned, W and Z SNPs
+plink --file allspecimens_VQSRpassSNPs_Chr1 --merge-list merge_list --recode --out /<path_to_output_directory20>/allspecimens_VQSRpassSNPs_merged_NoUnWZ
+
+#Change permissions
+chmod -R 777 *
+chmod -R 777 /<path_to_output_directory20>/*
