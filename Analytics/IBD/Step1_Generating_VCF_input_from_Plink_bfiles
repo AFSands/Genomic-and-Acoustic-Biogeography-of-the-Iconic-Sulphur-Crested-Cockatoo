@@ -1,0 +1,21 @@
+
+
+
+#Change permissions
+chmod -R 777 *
+
+#Creating VCF to calculate genetic distance
+plink --file allspecimens_VQSRpassSNPs_mergedNoUnWZ --remove removesamples2 --recode vcf --out intra_VQSRpassSNPs_mergedNoUnWZ
+gatk SelectVariants -V intra_VQSRpassSNPs_mergedNoUnWZ.vcf -O intra_VQSRpassSNPs_mergedNoUnWZ_variants.vcf --exclude-non-variants
+vcftools --vcf intra_VQSRpassSNPs_mergedNoUnWZ_variants.vcf --plink --out intra_VQSRpassSNPs_mergedNoUnWZ_variants
+rm intra_VQSRpassSNPs_mergedNoUnWZ.vcf
+rm intra_VQSRpassSNPs_mergedNoUnWZ_variants.vcf
+plink --file intra_VQSRpassSNPs_mergedNoUnWZ_variants --make-bed --recode --out intra_VQSRpassSNPs_mergedNoUnWZ_variants
+plink --bfile intra_VQSRpassSNPs_mergedNoUnWZ_variants --maf 0.0227 --make-bed --out intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227
+plink --bfile intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227 --indep-pairwise 50 5 0.2 --out intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227
+plink --bfile intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227 --extract intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227.prune.in --make-bed --distance triangle ibs 1-ibs allele-ct --out intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix
+plink --bfile intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix --recode vcf --out intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_IBDvcf
+### Samples in ouput = 88; SNPs remaining in output = 1,745,807
+
+#Change permissions
+chmod -R 777 *
