@@ -1,10 +1,10 @@
 ## NOTE1: This script uses the outputs from the final step of the WGR processing as the initial input.
-## NOTE2: This script contains a lista of samples to be removed from Admixture (see Step1_removesamples2). This list is called "removesamples2".
+## NOTE2: This script contains a list of samples to be removed from Admixture (see Step1_removesamples2). This list is called "removesamples2".
 
-#change permissions
+#Change permissions
 chmod -R 777 *
 
-#Intraspecific PCA (88 samples = 70 x C.g.galerita, 14 x C.g.fitzroyi, 4 x C.g.triton complex; excluding C.g.triton Oro) - Note maf is adjusted so as that alleles need to be present in at least two full samples.
+#Creating bfile inputs for Admixture (88 samples = 70 x C.g.galerita, 14 x C.g.fitzroyi, 4 x C.g.triton complex; excluding C.g.triton Oro) - Note maf is adjusted so as that alleles need to be present in at least two full samples.
 plink --file allspecimens_VQSRpassSNPs_mergedNoUnWZ --remove removesamples2 --recode vcf --out intra_VQSRpassSNPs_mergedNoUnWZ
 gatk SelectVariants -V intra_VQSRpassSNPs_mergedNoUnWZ.vcf -O intra_VQSRpassSNPs_mergedNoUnWZ_variants.vcf --exclude-non-variants
 vcftools --vcf intra_VQSRpassSNPs_mergedNoUnWZ_variants.vcf --plink --out intra_VQSRpassSNPs_mergedNoUnWZ_variants
@@ -16,5 +16,5 @@ plink --bfile intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227 --indep-pairwise
 plink --bfile intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227 --extract intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227.prune.in --make-bed --distance triangle ibs 1-ibs allele-ct --out intra_VQSRpassSNPs_mergedNoUnWZ_variants_maf00227_ldprune_PCA2_Admix
 ### Samples in output = 88; SNPs remaining in output = 1,745,807
 
-#change permissions
+#Change permissions
 chmod -R 777 *
