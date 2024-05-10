@@ -1,0 +1,11 @@
+
+
+
+#Changing permissions
+chmod -R 777 *
+
+#Calculating genetic distance (100 bootstrap replicates)
+/projappl/project_2006079/IBD/ngsDist/ngsDist --geno outI.geno.gz --n_ind 88 --n_sites 1745807 --labels outI.labels --n_boot_rep 100 --n_threads 12 --out outI.dist
+
+#Changing permissions
+chmod -R 777 *
