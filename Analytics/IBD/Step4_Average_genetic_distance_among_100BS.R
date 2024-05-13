@@ -1,4 +1,5 @@
-# R script to average 100 bootstrap replicates of genetic distance matrices 
+## NOTE1: R script to average 100 bootstrap replicates of genetic distance matrices
+## NOTE2: Requires an input of bootstrap replicates (See Step4_outI.dist), herein termed "outI.dist".
 
 all.data = c("outI")
 setwd("IBD/")
