@@ -1,4 +1,4 @@
-
+## NOTE1: This script is used to reformat the output VCF from Step1 to be able to calculate genetic distance with ngsDist in Step3.
 
 #Changing permissions
 chmod -R 777 *
