@@ -1,0 +1,17 @@
+## NOTE1: This script generates a PSMC + 100 bootstrap replicates for a given specimen (i.e. in this case B29233)
+## NOTE2: This script should be repeated for all desired specimens requiring PSMCs
+## NOTE3: This script uses the output .fq.gz file from Step1 as an input. 
+## NOTE4: This script requires gnuplot to be loaded
+## NOTE5: This script needs to be run from the directory where PSMC files are installed
+
+#Change permissions
+chmod -R 777 *
+
+psmc-master/utils/fq2psmcfa -q20 /scratch/project_2006079/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/PSMC/fq_files/fq_files/B29233.fq.gz > B29233.single.psmcfa
+psmc-master/psmc -N30 -t5 -r5 -p "4+30*2+4+6+10" -o B29233.single.psmc B29233.single.psmcfa
+PSMC_utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B29233.plotsingle.psmc B29233.single.psmc
+psmc-master/utils/splitfa B29233.single.psmcfa > B29233.single.split.psmcfa
+seq 100 | xargs -I{} --max-args 1 psmc-master/psmc -N30 -t5 -r5 -b -p "4+30*2+4+6+10" -o B29233_round-{}.psmc B29233.single.split.psmcfa | sh
+
+#Change permissions
+chmod -R 777 *
