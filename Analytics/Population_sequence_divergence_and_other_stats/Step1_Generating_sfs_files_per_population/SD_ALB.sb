@@ -1,0 +1,7 @@
+module load angsd
+
+GENOME="/<path_to_genome>/GCA_013397665.1_ASM1339766v1.fa"
+FILTERS=" -uniqueOnly 1 -remove_bads 1 -minMapQ 30 -minQ 30 -C 50 -only_proper_pairs 1"
+
+angsd -bam bamlist_ALB_autosome -doSaf 1 -anc $GENOME -ref $GENOME -rf contig_map $FILTERS -GL 1 -P 12 -doCounts 1 -out ALB_autosome
+realSFS ALB_autosome.saf.idx -P 12 > ALB_autosome.sfs

@@ -1,0 +1,17 @@
+module load r-env
+
+srun singularity_wrapper exec Rscript Pi.R ACT.sfs
+srun singularity_wrapper exec Rscript Pi.R ALB.sfs
+srun singularity_wrapper exec Rscript Pi.R CYP.sfs
+srun singularity_wrapper exec Rscript Pi.R MOL.sfs
+srun singularity_wrapper exec Rscript Pi.R MVI.sfs
+srun singularity_wrapper exec Rscript Pi.R NSW.sfs
+srun singularity_wrapper exec Rscript Pi.R NT.sfs
+srun singularity_wrapper exec Rscript Pi.R SA.sfs
+srun singularity_wrapper exec Rscript Pi.R SCQ.sfs
+srun singularity_wrapper exec Rscript Pi.R SENG.sfs
+srun singularity_wrapper exec Rscript Pi.R SNG.sfs
+srun singularity_wrapper exec Rscript Pi.R SUL.sfs
+srun singularity_wrapper exec Rscript Pi.R TAS.sfs
+srun singularity_wrapper exec Rscript Pi.R VIC.sfs
+srun singularity_wrapper exec Rscript Pi.R WA.sfs
