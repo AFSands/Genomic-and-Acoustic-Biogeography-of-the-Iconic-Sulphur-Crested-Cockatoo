@@ -1,4 +1,4 @@
-
+## NOTE1: This step uses the outputs of Step2 as inputs to calculate 100 bootstrap distance matrices of genetic distance
 
 
 #Changing permissions
