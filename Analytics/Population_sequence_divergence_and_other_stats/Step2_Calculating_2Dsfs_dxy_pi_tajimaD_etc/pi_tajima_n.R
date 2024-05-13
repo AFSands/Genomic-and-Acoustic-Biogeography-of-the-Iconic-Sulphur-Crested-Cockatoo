@@ -1,3 +1,5 @@
+setwd("/scratch/project_2006079/aDNA/step6_MapDamage/withoutF4flag/Angsd_test/SAF_POP")
+
 ################################################################################################################
 ##
 ## Paolo Momigliano August 2020 
