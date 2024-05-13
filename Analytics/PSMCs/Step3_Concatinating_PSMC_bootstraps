@@ -1,0 +1,55 @@
+## NOTE1: This script requires gnuplot to be loaded.
+## NOTE2: This script needs to be run from the directory where PSMC is installed.
+## NOTE3: This script uses the outputs from Step2 as inputs.
+
+# B29233
+cat B29233.single.psmc B29233_round-*.psmc > B29233.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B29233.plot.psmc B29233.combined.psmc
+
+# B43561
+cat B43561.single.psmc B43561_round-*.psmc > B43561.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B43561.plot.psmc B43561.combined.psmc
+
+# B48687
+cat B48687.single.psmc B48687_round-*.psmc > B48687.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B48687.plot.psmc B48687.combined.psmc
+
+# B49784
+cat B49784.single.psmc B49784_round-*.psmc > B49784.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B49784.plot.psmc B49784.combined.psmc
+
+# B50845
+cat B50845.single.psmc B50845_round-*.psmc > B50845.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B50845.plot.psmc B50845.combined.psmc
+
+# B53845
+cat B53845.single.psmc B53845_round-*.psmc > B53845.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B53845.plot.psmc B53845.combined.psmc
+
+# B54657
+cat B54657.single.psmc B54657_round-*.psmc > B54657.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B54657.plot.psmc B54657.combined.psmc
+
+# B56139
+cat B56139.single.psmc B56139_round-*.psmc > B56139.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B56139.plot.psmc B56139.combined.psmc
+
+# B56304
+cat B56304.single.psmc B56304_round-*.psmc > B56304.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B56304.plot.psmc B56304.combined.psmc
+
+# B57146
+cat B57146.single.psmc B57146_round-*.psmc > B57146.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B57146.plot.psmc B57146.combined.psmc
+
+# B57669
+cat B57669.single.psmc B57669_round-*.psmc > B57669.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B57669.plot.psmc B57669.combined.psmc
+
+# B57781
+cat B57781.single.psmc B57781_round-*.psmc > B57781.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B57781.plot.psmc B57781.combined.psmc
+
+# B60554
+cat B60554.single.psmc B60554_round-*.psmc > B60554.combined.psmc
+psmc-master/utils/psmc_plot.pl -u 1.05e-8 -g 13.8 -R -p B60554.plot.psmc B60554.combined.psmc
