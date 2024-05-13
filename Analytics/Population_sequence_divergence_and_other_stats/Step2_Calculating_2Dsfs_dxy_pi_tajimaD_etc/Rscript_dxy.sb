@@ -1,0 +1,136 @@
+module load r-env
+
+#ACTx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_ALB_autosome.saf 13 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_CYP_autosome.saf 13 20
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_MOL_autosome.saf 13 1
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_MVI_autosome.saf 13 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_NSW_autosome.saf 13 16
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_NT_autosome.saf 13 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_SA_autosome.saf 13 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_SCQ_autosome.saf 13 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_SENG_autosome.saf 13 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_SNG_autosome.saf 13 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_SUL_autosome.saf 13 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_TAS_autosome.saf 13 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_VIC_autosome.saf 13 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_WA_autosome.saf 13 4
+
+#ALBx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_CYP_autosome.saf 2 20
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_MOL_autosome.saf 2 1
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_MVI_autosome.saf 2 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_NSW_autosome.saf 2 16
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_NT_autosome.saf 2 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_SA_autosome.saf 2 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_SCQ_autosome.saf 2 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_SENG_autosome.saf 2 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_SNG_autosome.saf 2 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_SUL_autosome.saf 2 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_TAS_autosome.saf 2 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_VIC_autosome.saf 2 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_ALB_WA_autosome.saf 2 4
+
+#CYPx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_MOL_autosome.saf 20 1
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_MVI_autosome.saf 20 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_NSW_autosome.saf 20 16
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_NT_autosome.saf 20 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_SA_autosome.saf 20 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_SCQ_autosome.saf 20 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_SENG_autosome.saf 20 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_SNG_autosome.saf 20 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_SUL_autosome.saf 20 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_TAS_autosome.saf 20 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_VIC_autosome.saf 20 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_CYP_WA_autosome.saf 20 4
+
+#MOLx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_MVI_autosome.saf 1 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_NSW_autosome.saf 1 16
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_NT_autosome.saf 1 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_SA_autosome.saf 1 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_SCQ_autosome.saf 1 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_SENG_autosome.saf 1 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_SNG_autosome.saf 1 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_SUL_autosome.saf 1 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_TAS_autosome.saf 1 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_VIC_autosome.saf 1 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MOL_WA_autosome.saf 1 4
+
+#MVIx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_NSW_autosome.saf 3 16
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_NT_autosome.saf 3 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_SA_autosome.saf 3 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_SCQ_autosome.saf 3 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_SENG_autosome.saf 3 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_SNG_autosome.saf 3 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_SUL_autosome.saf 3 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_TAS_autosome.saf 3 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_VIC_autosome.saf 3 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_MVI_WA_autosome.saf 3 4
+
+#NSWx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_NT_autosome.saf 16 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_SA_autosome.saf 16 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_SCQ_autosome.saf 16 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_SENG_autosome.saf 16 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_SNG_autosome.saf 16 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_SUL_autosome.saf 16 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_TAS_autosome.saf 16 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_VIC_autosome.saf 16 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NSW_WA_autosome.saf 16 4
+
+#NTx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_SA_autosome.saf 7 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_SCQ_autosome.saf 7 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_SENG_autosome.saf 7 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_SNG_autosome.saf 7 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_SUL_autosome.saf 7 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_TAS_autosome.saf 7 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_VIC_autosome.saf 7 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_NT_WA_autosome.saf 7 4
+
+#SAx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_SCQ_autosome.saf 2 11
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_SENG_autosome.saf 2 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_SNG_autosome.saf 2 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_SUL_autosome.saf 2 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_TAS_autosome.saf 2 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_VIC_autosome.saf 2 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SA_WA_autosome.saf 2 4
+
+#SCQx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SCQ_SENG_autosome.saf 11 7
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SCQ_SNG_autosome.saf 11 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SCQ_SUL_autosome.saf 11 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SCQ_TAS_autosome.saf 11 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SCQ_VIC_autosome.saf 11 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SCQ_WA_autosome.saf 11 4
+
+#SENGx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SENG_SNG_autosome.saf 7 4
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SENG_SUL_autosome.saf 7 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SENG_TAS_autosome.saf 7 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SENG_VIC_autosome.saf 7 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SENG_WA_autosome.saf 7 4
+
+#SNGx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SNG_SUL_autosome.saf 4 2
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SNG_TAS_autosome.saf 4 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SNG_VIC_autosome.saf 4 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SNG_WA_autosome.saf 4 4
+
+#SULx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SUL_TAS_autosome.saf 2 5
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SUL_VIC_autosome.saf 2 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_SUL_WA_autosome.saf 2 4
+
+#TASx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_TAS_VIC_autosome.saf 5 3
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_TAS_WA_autosome.saf 5 4
+
+#VICx
+srun singularity_wrapper exec Rscript dxy.R 2dsfs_VIC_WA_autosome.saf 3 4
+
+chmod -R 777 *

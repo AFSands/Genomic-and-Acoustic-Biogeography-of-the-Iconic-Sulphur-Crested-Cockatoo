@@ -1,0 +1,17 @@
+module load r-env
+
+srun singularity_wrapper exec Rscript pi_tajima_n.R ACT_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R ALB_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R CYP_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R MOL_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R MVI_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R NSW_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R NT_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R SA_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R SCQ_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R SENG_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R SNG_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R SUL_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R TAS_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R VIC_autosome.sfs
+srun singularity_wrapper exec Rscript pi_tajima_n.R WA_autosome.sfs
