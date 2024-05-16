@@ -1,6 +1,10 @@
 ## NOTE1: This script is run in the directory containing the VCF output from IQTree/Step1.
-## NOTE2: This script requires an accompanying python script called "vcf2phylip.py". To obtain this script see https://github.com/edgardomortiz/vcf2phylip
+## NOTE2: This script requires an accompanying python script called "vcf2phylip.py". To obtain this script see https://github.com/edgardomortiz/vcf2phylip.
 ## NOTE3: This command will create PHYLIP, FASTA (i.e. inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_IQTree.min99.fasta) and NEXUS files from the VCF where only SNPs across all samples will be retained given there are 99 samples in this dataset. 
+## NOTE4: These lines of code were run through an interactive node on Puhti (https://www.puhti.csc.fi/public/).
+#########################################################################
+
+module load bioconda
 
 #Changing permissions
 chmod -R 777 *
