@@ -20,9 +20,9 @@ WGR-processing
 ########################
 Processing batch scripts and support files examples for whole-genome resequencing data can be found in the "WGR-processing" directory. 
 These scripts and support file examples have been labelled in order of processing from Step1-17. 
-The scripts have been contracted generically where pathways, input file names and output names require specification. 
-Notes have been given at the top of each script where possible to provide basic instructions.
-Given the initiation of different software/packages may be called differently on different high-performance computers, lines of code activating/running software/packages should be added by the user.
+The scripts have been constructed generically where pathways, input file names and output names require specification. 
+Notes have been given at the top of each script (where possible) to provide basic instructions.
+Given the initiation of different software/packages may be called differently on different high-performance computers, lines of code activating/running software/packages should be added by the user and are not specified.
 
 
 ########################
@@ -31,7 +31,7 @@ Analytics
 Processing batch and R scripts and supporting files for specific analysis can be found in the "Analytics" directory. 
 These scripts and support files have been placed in subdirectories named according to the analysis and are labelled in order of processing from Step1-x. 
 For the most part, the scripts are given with pathways, input file names and output names exactly how they were run on the high-performance computer Puhti (CSS) or on the authors' personal computers. 
-Notes have been given at the top of each script where possible to provide basic instructions.
+Notes have been given at the top of each script (where possible) to provide basic instructions.
 
 ########################
 Data files & raw results
