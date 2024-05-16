@@ -1,6 +1,19 @@
 ## NOTE1: This script is run as an array job from the directory where the Plink bfile outputs from Admixture/Step1 are found.
 ## NOTE2: This script runs 10 replicates (A-J) of each k value, where the k values (1-6) are provided in a name list (see Step2_namelist) called "namelist" herein. 
 ## NOTE3: The number of arrays is set to the total k's assessed (i.e. 6)
+#########################################################################
+
+#!/bin/bash -l
+#SBATCH --job-name=admix
+#SBATCH --output=array_job_out_%A_%a.txt
+#SBATCH --error=array_job_err_%A_%a.txt
+#SBATCH --account=project_2006079
+#SBATCH --partition=small
+#SBATCH --time=48:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=12
+#SBATCH --mem-per-cpu=28G
+#SBATCH --array=1-6
 
 #Change permissions
 chmod -R 777 *
