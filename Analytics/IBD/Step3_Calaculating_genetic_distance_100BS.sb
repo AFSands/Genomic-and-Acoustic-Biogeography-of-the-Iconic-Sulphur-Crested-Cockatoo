@@ -1,5 +1,5 @@
 ## NOTE1: This step uses the outputs of Step2 as inputs to calculate 100 bootstrap distance matrices of genetic distance
-## NOTE2: This script was run as a batch script.
+## NOTE2: This script was run as a batch script on Puhti (see https://www.puhti.csc.fi/public/).
 #########################################################################
 
 #!/bin/bash -l
