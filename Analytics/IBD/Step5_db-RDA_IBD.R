@@ -2,6 +2,7 @@
 ## NOTE2: This script uses a slighty reformated genetic distance maxtrix from Step4 (modified in excel to semicolon seperated; see Step5_outI_mean100_corrected.csv - herein termed "outI_mean100_corrected.csv")
 ## NOTE3: This script uses a list of GPS coordinate data for the specimens incoporated (see Step5_I_coords.csv - herein termed "I_coords.csv")
 ## NOTE4: This script uses a slighty reformated geographic distance maxtrix (in km) from GeographicDistanceMatrixGenerator_v1.2.3 (modified in excel to semicolon seperated; see Step5_I_GGD.csv - herein termed "I_GGD.csv")
+#########################################################################
 
 setwd("C:<path_to_files>")
 install.packages("vegan")
