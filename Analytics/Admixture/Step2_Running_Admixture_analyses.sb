@@ -1,6 +1,7 @@
 ## NOTE1: This script is run as an array job from the directory where the Plink bfile outputs from Admixture/Step1 are found.
-## NOTE2: This script runs 10 replicates (A-J) of each k value, where the k values (1-6) are provided in a name list (see Step2_namelist) called "namelist" herein. 
-## NOTE3: The number of arrays is set to the total k's assessed (i.e. 6)
+## NOTE2: This script was run as a batch script.
+## NOTE3: This script runs 10 replicates (A-J) of each k value, where the k values (1-6) are provided in a name list (see Step2_namelist) called "namelist" herein. 
+## NOTE4: The number of arrays is set to the total k's assessed (i.e. 6).
 #########################################################################
 
 #!/bin/bash -l
