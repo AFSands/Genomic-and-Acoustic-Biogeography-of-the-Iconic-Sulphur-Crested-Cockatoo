@@ -1,4 +1,19 @@
+#!/bin/bash -l
+#SBATCH --job-name=2Dsfs
+#SBATCH --error=%j.err
+#SBATCH --output=%j.out
+#SBATCH --account=project_2006079
+#SBATCH --partition=hugemem
+#SBATCH --time=72:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem-per-cpu=28G
+#SBATCH --gres=nvme:400
+
 module load angsd
+
+#Change permissions
+chmod -R 777 *
 
 #ACTx
 winsfs ACT_autosome.saf.idx ALB_autosome.saf.idx -t 16 -vv >2dsfs_ACT_ALB_autosome.saf
@@ -132,3 +147,6 @@ winsfs TAS_autosome.saf.idx WA_autosome.saf.idx -t 16 -vv >2dsfs_TAS_WA_autosome
 
 #VICx
 winsfs VIC_autosome.saf.idx WA_autosome.saf.idx -t 16 -vv >2dsfs_VIC_WA_autosome.saf
+
+#Change permissions
+chmod -R 777 *
