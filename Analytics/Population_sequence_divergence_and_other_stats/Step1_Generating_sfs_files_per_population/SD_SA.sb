@@ -1,3 +1,14 @@
+#!/bin/bash
+#SBATCH --account=project_2006079
+#SBATCH --output SA_POPSFS.out
+#SBATCH --error SA_POPSFS.err
+#SBATCH --partition=small
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=12
+#SBATCH --time=3-00:00:00
+#SBATCH --mem-per-cpu=12G
+#SBATCH --gres=nvme:200
+
 module load angsd
 
 GENOME="/<path_to_genome>/GCA_013397665.1_ASM1339766v1.fa"
