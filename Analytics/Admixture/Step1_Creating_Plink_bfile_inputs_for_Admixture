@@ -1,7 +1,7 @@
 ## NOTE1: This script uses the outputs from the final step of the WGR processing as the initial input.
 ## NOTE2: This script contains a list of samples to be removed from Admixture (see Step1_removesamples2). This list is called "removesamples2".
 ## NOTE3: These lines of code were run through an interactive node on Puhti (https://www.puhti.csc.fi/public/).
-
+#########################################################################
 
 module load plink/1.90
 module load gatk
