@@ -1,5 +1,5 @@
-## NOTE1:
-
+## NOTE1: This script was run in R with the outputs from EEMS
+#########################################################################
 
 library(devtools)
 install_github("dipetkov/eems/plotting/rEEMSplots")
