@@ -1,8 +1,23 @@
-## NOTE1: This script generates a PSMC + 100 bootstrap replicates for a given specimen (i.e. in this case B29233)
-## NOTE2: This script should be repeated for all desired specimens requiring PSMCs
-## NOTE3: This script uses the output .fq.gz file from Step1 as an input. 
-## NOTE4: This script requires gnuplot to be loaded
-## NOTE5: This script needs to be run from the directory where PSMC files are installed
+## NOTE1: This script generates a PSMC + 100 bootstrap replicates for a given specimen (i.e. in this case B29233).
+## NOTE2: This script was run as a batch script on Puhti (see https://www.puhti.csc.fi/public/).
+## NOTE3: This script should be repeated for all desired specimens requiring PSMCs.
+## NOTE4: This script uses the output .fq.gz file from Step1 as an input. 
+## NOTE5: This script requires gnuplot to be loaded.
+## NOTE6: This script needs to be run from the directory where PSMC files are installed.
+#########################################################################
+
+#!/bin/bash -l
+#SBATCH --job-name=PSMC
+#SBATCH --output=array_job_out_%A_%a.txt
+#SBATCH --error=array_job_err_%A_%a.txt
+#SBATCH --account=project_2006079
+#SBATCH --partition=longrun
+#SBATCH --time=168:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem-per-cpu=16G
+
+module load gnuplot
 
 #Change permissions
 chmod -R 777 *
