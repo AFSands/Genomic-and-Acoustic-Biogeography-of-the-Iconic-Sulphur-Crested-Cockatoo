@@ -1,5 +1,11 @@
 ## NOTE1: This script uses an intermediate output from PCAs/Step1_PCA_Plink_scripts as the initial input.
 ## NOTE2: This script retains a subset of 36 specimens by providing an accompanying list called "keepsamples0B" (see Step1_keepsamples08)
+## NOTE3: These lines of code were run through an interactive node on Puhti (https://www.puhti.csc.fi/public/).
+#########################################################################
+
+module load plink/1.90
+module load gatk
+module load biokit
 
 #Change permissions
 chmod -R 777 *
