@@ -1,5 +1,5 @@
 ## NOTE1: This script was run as a batch script on Puhti (see https://www.puhti.csc.fi/public/).
-## NOTE2: This script is used to creat 2D sfs files for cross population comparisons. 
+## NOTE2: This script is used to creat 2D sfs files for cross-population comparisons. 
 ## NOTE3: This script should be run from the directory containing the outputs from Step1
 #########################################################################
 
