@@ -1,4 +1,19 @@
+#!/bin/bash -l
+#SBATCH --job-name=Run_dxy
+#SBATCH --account=project_2006079
+#SBATCH --partition=small
+#SBATCH --time=24:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=16G
+#SBATCH --mail-type=END
+#SBATCH --error=%j.err
+#SBATCH --output=%j.out
+
 module load r-env
+
+#Change permissions
+chmod -R 777 *
 
 #ACTx
 srun singularity_wrapper exec Rscript dxy.R 2dsfs_ACT_ALB_autosome.saf 13 2
@@ -133,4 +148,5 @@ srun singularity_wrapper exec Rscript dxy.R 2dsfs_TAS_WA_autosome.saf 5 4
 #VICx
 srun singularity_wrapper exec Rscript dxy.R 2dsfs_VIC_WA_autosome.saf 3 4
 
+#Change permissions
 chmod -R 777 *
