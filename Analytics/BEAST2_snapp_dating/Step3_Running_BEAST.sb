@@ -1,9 +1,9 @@
 ## NOTE1: This script should be run in a directory containing the .xml output from BEAST2_snapp_dating/Step2, which are used as inputs.
 ## NOTE2: This script was run as a batch script.
-## NOTE2: To continue existing simulations, the "Running BEAST" portion of the script (line 11) should be #'ed and the "Continuing an existing simulation" portion of the script (line 13) should be un-#'ed.
-## NOTE3: This script is used for "SNAPP_19.xml" (as shown below) and was repeated for "SNAPP_18.xml" (also see BEAST2_snapp_dating/Step2).
-## NOTE4: "SNAPP_18.xml" and "SNAPP_19.xml" are given as Step3_SNAPP_18.xml and Step3_SNAPP_19.xml herein.
-## NOTE5: This script was repeated for 40 independent simulations of SNAPP_19.xml and 20 independent simulations of SNAPP_18.xml.
+## NOTE3: To continue existing simulations, the "Running BEAST" portion of the script (line 11) should be #'ed and the "Continuing an existing simulation" portion of the script (line 13) should be un-#'ed.
+## NOTE4: This script is used for "SNAPP_19.xml" (as shown below) and was repeated for "SNAPP_18.xml" (also see BEAST2_snapp_dating/Step2).
+## NOTE5: "SNAPP_18.xml" and "SNAPP_19.xml" are given as Step3_SNAPP_18.xml and Step3_SNAPP_19.xml herein.
+## NOTE6: This script was repeated for 40 independent simulations of SNAPP_19.xml and 20 independent simulations of SNAPP_18.xml.
 #########################################################################
 
 #!/bin/bash -l
