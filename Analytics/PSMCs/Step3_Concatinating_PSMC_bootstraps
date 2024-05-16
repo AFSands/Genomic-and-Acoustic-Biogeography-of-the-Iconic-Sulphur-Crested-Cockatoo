@@ -1,6 +1,21 @@
 ## NOTE1: This script requires gnuplot to be loaded.
 ## NOTE2: This script needs to be run from the directory where PSMC is installed.
 ## NOTE3: This script uses the outputs from Step2 as inputs.
+## NOTE4: This script was run as a batch script on Puhti (see https://www.puhti.csc.fi/public/).
+#########################################################################
+
+#!/bin/bash -l
+#SBATCH --job-name=PSMCcombineplot
+#SBATCH --output=array_job_out_%A_%a.txt
+#SBATCH --error=array_job_err_%A_%a.txt
+#SBATCH --account=project_2006079
+#SBATCH --partition=small
+#SBATCH --time=04:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=16G
+
+module load gnuplot
 
 # B29233
 cat B29233.single.psmc B29233_round-*.psmc > B29233.combined.psmc
