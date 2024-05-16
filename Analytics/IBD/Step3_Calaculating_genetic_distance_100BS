@@ -1,5 +1,15 @@
 ## NOTE1: This step uses the outputs of Step2 as inputs to calculate 100 bootstrap distance matrices of genetic distance
 
+#!/bin/bash -l
+#SBATCH --job-name=IBD_2
+#SBATCH --output=array_job_out_%A_%a.txt
+#SBATCH --error=array_job_err_%A_%a.txt
+#SBATCH --account=project_2006079
+#SBATCH --partition=small
+#SBATCH --time=72:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=12
+#SBATCH --mem-per-cpu=12G
 
 #Changing permissions
 chmod -R 777 *
