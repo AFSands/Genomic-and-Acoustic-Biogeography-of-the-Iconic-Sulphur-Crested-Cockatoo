@@ -1,16 +1,6 @@
 ## NOTE1: EEMS was run in an interactive node using the following parameter file and line of code (see below).
 ## NOTE2: This code was used to run two independent runs (i.e. run twice) with separate seed values.
+## NOTE3: Preparing .coord, .outer and .diffs (from Plink .bed, .bim and .fam files) files can be found at (https://github.com/dipetkov/eems)
 #########################################################################
 
-EEMs parameter file (run_eems_galerita10k_1.ini):
-datapath = pathtofile/galerita10k
-mcmcpath = pathtofile/galerita10k_chain_1
-nIndiv = 88
-nSites = 10000
-nDemes = 10000
-diploid = true
-numMCMCIter = 20000000
-numBurnIter = 10000000
-numThinIter = 99999
-
-code run: runeems_snps --params run_eems_galerita10k_1.ini --seed 123
+runeems_snps --params run_eems_galerita10k_1.ini --seed 123
