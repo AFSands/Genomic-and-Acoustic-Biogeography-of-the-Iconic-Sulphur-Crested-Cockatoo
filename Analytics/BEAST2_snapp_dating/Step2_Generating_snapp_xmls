@@ -1,10 +1,12 @@
 ## NOTE1: This script should be run from the directory containing the VCF output from BEAST2_snapp_dating/Step1.
-## NOTE2: This script generates two xml files based on different calibration approaches. 
-## NOTE3: This script uses constraint files (see Step2_constaint18.txt & Step2_constaint19.txt). Herein they are called "constraint18.txt" and "constraint19.txt"
-## NOTE4: This script uses a starting tree (see Step2_alba.tre). Herein they are called "alba.tre"
-## NOTE5: This script requires a list of specimen names and designated groupings (i.e. populations; see Step2_samples36.txt) for the subset used for this analysis. Herein this list is called "samples36.txt".
-## NOTE6: This script requires an accompanying ruby script in the directory where it is initiated. To download see https://raw.githubusercontent.com/mmatschiner/snapp_prep/master/snapp_prep.rb
-## NOTE7: This script uses a VCF file of 10k SNPs (see Step2_intersub_VQSRpassSNPs_10k_mergedNoUnWZ_maf00202_ldprune_variants_BEAST_test3.vcf). Herein they are called "intersub_VQSRpassSNPs_10k_mergedNoUnWZ_maf00202_ldprune_variants_BEAST_test3.vcf".
+## NOTE2: These lines of code were run through an interactive node on Puhti (https://www.puhti.csc.fi/public/).
+## NOTE3: This script generates two xml files based on different calibration approaches. 
+## NOTE4: This script uses constraint files (see Step2_constaint18.txt & Step2_constaint19.txt). Herein they are called "constraint18.txt" and "constraint19.txt"
+## NOTE5: This script uses a starting tree (see Step2_alba.tre). Herein they are called "alba.tre"
+## NOTE6: This script requires a list of specimen names and designated groupings (i.e. populations; see Step2_samples36.txt) for the subset used for this analysis. Herein this list is called "samples36.txt".
+## NOTE7: This script requires an accompanying ruby script in the directory where it is initiated. To download see https://raw.githubusercontent.com/mmatschiner/snapp_prep/master/snapp_prep.rb
+## NOTE8: This script uses a VCF file of 10k SNPs (see Step2_intersub_VQSRpassSNPs_10k_mergedNoUnWZ_maf00202_ldprune_variants_BEAST_test3.vcf). Herein they are called "intersub_VQSRpassSNPs_10k_mergedNoUnWZ_maf00202_ldprune_variants_BEAST_test3.vcf".
+#########################################################################
 
 #Change permissions
 chmod -R 777 *
