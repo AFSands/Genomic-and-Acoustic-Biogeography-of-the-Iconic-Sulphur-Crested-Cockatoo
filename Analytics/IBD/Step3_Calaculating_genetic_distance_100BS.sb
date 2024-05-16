@@ -1,4 +1,6 @@
 ## NOTE1: This step uses the outputs of Step2 as inputs to calculate 100 bootstrap distance matrices of genetic distance
+## NOTE2: This script was run as a batch script.
+#########################################################################
 
 #!/bin/bash -l
 #SBATCH --job-name=IBD_2
