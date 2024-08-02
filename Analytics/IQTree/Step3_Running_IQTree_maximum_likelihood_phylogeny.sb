@@ -14,12 +14,15 @@
 #SBATCH --output output.%J
 #SBATCH --error=test.err.%J
 
-module load iqtree
+module load iqtree/2.2.0.3
 
 #Change permissions
 chmod -R 777 *
 
-iqtree -s inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_IQTree.min99.fasta -v -m TEST -bb 10000 -bnni -st DNA -nt AUTO
+#To generate a phylip with only variant sites
+iqtree -s inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_IQTree.min99.fasta -v -m GTR+ASC -bb 10000 -bnni -st DNA -nt AUTO -wsl -redo
+#To generate a ML phylogeny of 10000 BS
+iqtree -s inter_VQSRpassSNPs_mergedNoUnWZ_variants_maf00202_ldprune_IQTree.min99.fasta.varsites.phy -v -m GTR+ASC -bb 10000 -bnni -st DNA -nt AUTO
 
 #Change permissions
 chmod -R 777 *
