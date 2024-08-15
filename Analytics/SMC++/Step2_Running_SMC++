@@ -1,3 +1,9 @@
+## NOTE1: This script is run in the directory containing the VCF from step one. This VCF should be zipped and indexed for SMC++.
+## NOTE2: This main directory contains several subdirectories for independent replicates for each group (i.e. named out_Pop1<a-j>_Fitz and out_Pop2<a-j>_Gal) and subdirectories for each combined replicate for split assessments (i.e. combined_<a-j>)
+##        within each subdirectory are several other subdirectories (e.g. analysis, pop1, pop2 and split) which will need to be set up prior to running.
+## NOTE2: This script was run interactively on Puhti (see https://www.puhti.csc.fi/public/), but can also be run as a batch script. 
+#########################################################################
+
 #!/bin/bash
 #SBATCH --job-name=smcpp
 #SBATCH --account=project_2006079
@@ -1274,6 +1280,7 @@ apptainer run --nv /projappl/project_2006079/smc/smcpp.sif estimate -o analysis/
 apptainer run --nv /projappl/project_2006079/smc/smcpp.sif plot -c -g 13.8 plot.pdf analysis/model.final.json
 
 ## Estimating and plotting SMC++ Ne replicates for split modeling
+
 #combined plots
 cd /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_a
 apptainer run --nv /projappl/project_2006079/smc/smcpp.sif split -o /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_a/split /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_a/pop1/model.final.json /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_a/pop2/model.final.json /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_a/*.smc.gz
@@ -1306,4 +1313,6 @@ cd /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw
 apptainer run --nv /projappl/project_2006079/smc/smcpp.sif split -o /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_j/split /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_j/pop1/model.final.json /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_j/pop2/model.final.json /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_j/*.smc.gz
 apptainer run --nv /projappl/project_2006079/smc/smcpp.sif plot -c -g 13.8 joint_j.pdf /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp/combined_j/split/model.final.json
 
-
+## change permissions
+cd /scratch/project_2006079/temporary_storage_scc_AUSPNG_raw_data/scc_AUSPNG_raw_data/F22FTSHMHT0382_ANIztblR/soapnuke/Plink/Analysis10_SMCpp
+chmod -R 777 *
