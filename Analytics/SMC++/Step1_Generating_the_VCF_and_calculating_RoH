@@ -1,0 +1,58 @@
+## NOTE1: This script uses the outputs from the final step of the WGR processing as the initial input.
+## NOTE2: This script contains three lists of samples to be kept (see Step1_keepsamplesGalFitz, Step1_keepsamplesGal and Step1_keepsamplesFitz). These are called "keepsamplesGalFitz", "keepsamplesGal" and "keepsamplesFitz"
+## NOTE3: These lines of code were run through an interactive node on Puhti (https://www.puhti.csc.fi/public/).
+#########################################################################
+
+module load plink/1.90
+module load gatk
+module load biokit
+
+#change permissions
+chmod -R 777 *
+
+## Generate VCF for SMC++ (49 samples = 38 x C.g.galerita + 11 x C.g.fitzroyi)
+plink --file allspecimens_VQSRpassSNPs_mergedNoUnWZ --keep keepsamplesGalFitz --recode vcf --out galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp ### Samples in ouput = 49; SNPs remaining in output = 50,631,788
+gatk SelectVariants -V galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp.vcf -O galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants.vcf --exclude-non-variants
+vcftools --vcf galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants.vcf --plink --out galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants ### Samples in ouput = 49; SNPs remaining in output = 10,106,311
+rm galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp.vcf
+
+#change permissions
+chmod -R 777 *
+
+## Calculate runs of homozygosity (RoH) for combined dataset - note maf is adjusted so as alleles need to be present in at least 2 full samples
+plink --file galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants --make-bed --recode --out galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants ### Samples in ouput = 49; SNPs remaining in output = 10,106,311
+plink --bfile galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants --maf 0.04081 --make-bed --out galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004 ### Samples in ouput = 49; SNPs remaining in output = 5,969,401
+plink --bfile galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004 --indep-pairwise 50 5 0.2 --out galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004 
+plink --bfile galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004 --extract galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004.prune.in --make-bed --out galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004_ldprune_homog ### Samples in ouput = 49; SNPs remaining in output = 815,207
+plink --bfile galfitz_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf004_ldprune_homog --homozyg-kb 100 --homozyg-window-snp 25 --homozyg-window-threshold 0.05 --homozyg-window-het 2 --homozyg-gap 1000  --homozyg-density 50 --homozyg-window-missing 5 --homozyg-het 750
+
+#change permissions
+chmod -R 777 *
+
+## Calculate runs of homozygosity (RoH) for C.g.galerita for SMC++ (38 samples = 38 C.g.galerita) - note maf is adjusted so as alleles need to be present in at least 2 full samples
+plink --file allspecimens_VQSRpassSNPs_mergedNoUnWZ --keep keepsamplesGal --recode vcf --out galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp ### Samples in ouput = 38; SNPs remaining in output = 50,631,788
+gatk SelectVariants -V galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp.vcf -O galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants.vcf --exclude-non-variants
+vcftools --vcf galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants.vcf --plink --out galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants ### Samples in ouput = 38; SNPs remaining in output = 6,058,556
+rm galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp.vcf
+plink --file galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants --make-bed --recode --out galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants ### Samples in ouput = 38; SNPs remaining in output = 6,058,556
+plink --bfile galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants --maf 0.05263 --make-bed --out galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005 ### Samples in ouput = 38; SNPs remaining in output = 3,200,890
+plink --bfile galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005 --indep-pairwise 50 5 0.2 --out galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005 
+plink --bfile galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005 --extract galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005.prune.in --make-bed --out galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005_ldprune_homog ### Samples in ouput = 38; SNPs remaining in output = 547,048
+plink --bfile galerita_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf005_ldprune_homog --homozyg-kb 100 --homozyg-window-snp 25 --homozyg-window-threshold 0.05 --homozyg-window-het 2 --homozyg-gap 1000  --homozyg-density 50 --homozyg-window-missing 5 --homozyg-het 750
+
+#change permissions
+chmod -R 777 *
+
+## Calculate runs of homozygosity (RoH) for C.g.fitzroyi for SMC++ (11 samples = 11 x C.g.fitzroyi) - note maf is adjusted so as alleles need to be present in at least 2 full samples
+plink --file allspecimens_VQSRpassSNPs_mergedNoUnWZ --keep keepsamplesFitz --recode vcf --out fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp ### Samples in ouput = 11; SNPs remaining in output = 50,631,788
+gatk SelectVariants -V fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp.vcf -O fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants.vcf --exclude-non-variants
+vcftools --vcf fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants.vcf --plink --out fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants ### Samples in ouput = 11; SNPs remaining in output = 6,284,596
+rm fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp.vcf
+plink --file fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants --make-bed --recode --out fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants ### Samples in ouput = 11; SNPs remaining in output = 6,284,596
+plink --bfile fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants --maf 0.18181 --make-bed --out fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018 ### Samples in ouput = 11; SNPs remaining in output = 4,430,053
+plink --bfile fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018 --indep-pairwise 50 5 0.2 --out fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018 
+plink --bfile fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018 --extract fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018.prune.in --make-bed --out fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018_ldprune_homog ### Samples in ouput = 11; SNPs remaining in output = 112,308
+plink --bfile fitzroyi_VQSRpassSNPs_mergedNoUnWZ_SMCpp_variants_maf018_ldprune_homog --homozyg-kb 100 --homozyg-window-snp 25 --homozyg-window-threshold 0.05 --homozyg-window-het 2 --homozyg-gap 1000  --homozyg-density 50 --homozyg-window-missing 5 --homozyg-het 750
+
+#change permissions
+chmod -R 777 *
