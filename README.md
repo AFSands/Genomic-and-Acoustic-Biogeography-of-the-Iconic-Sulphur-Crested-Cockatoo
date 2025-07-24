@@ -36,4 +36,4 @@ Notes have been given at the top of each script (where possible) to provide basi
 ########################
 Data files & raw results
 ########################
-Basic starting VCF files and raw/preliminary results can be found on the Dryad Digital Repository (see XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX) 
+Basic starting VCF files and raw/preliminary results can be found on the Dryad Digital Repository (see https://doi.org/10.5061/dryad.ghx3ffbxc) 
